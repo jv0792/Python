@@ -1,3 +1,4 @@
+###this code is specifically for pulling our a list of elements from csv file after applying certain mixed filters in the rows.
 import csv
 from csv import reader
 
