@@ -1,0 +1,24 @@
+import csv
+from csv import reader
+
+infile = r'U:\IT20-Q20\newtry\Inventory.csv'
+Outfile = r'U:\IT20-Q20\newtry\Output.csv'
+
+fieldnames = ['PROD_ID']
+
+#below is the opening of both the read 'r' and 'w' write files using utf-8 encoding.
+
+with open(infile,'r', encoding="utf-8-sig") as f, open(Outfile,'w', encoding="utf-8-sig", newline='') as outcsv:
+ csv_reader = reader(f,delimiter=',')
+
+ w = csv.DictWriter(outcsv, fieldnames=fieldnames, delimiter=',')
+ w.writeheader()
+
+ for row in csv_reader:
+  if all(['nork' in row[7], row[8] != 'ITA', row[63] in ["NOK"," "], 'DFFIT' in row[83], row[96].lower() == 'abc-09']):
+   if (row[63] == " "):
+    row[63] = 'BankElement'
+#  print(row[0], row[63])
+   w.writerow({"PROD_ID":row[0]})
+
+
